@@ -15,16 +15,15 @@ class NewsCustomAdapter (private val context: Activity, private val list: List<N
 
        val rootView = context.layoutInflater.inflate(R.layout.custom_list_item, null, true)
 
-       val r_href = rootView.findViewById<TextView>(R.id.r_href)
        val r_title = rootView.findViewById<TextView>(R.id.r_tittle)
        val r_image = rootView.findViewById<ImageView>(R.id.r_img)
 
        val news = list.get(position)
 
        r_title.text = news.title
-       r_href.text = news.href
 
-       Glide.with(context).load(news.img).into(r_image)
+
+       Glide.with(rootView).load(news.img).centerCrop().into(r_image)
 
        return rootView
    }
